@@ -52,7 +52,7 @@
         {
           "id": "TASK-201",
           "title": "SQL AST Validator & Read-Only Enforcer",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Parses SQL via sqlglot, prevents any mutating statements (DROP, DELETE, UPDATE, INSERT, ALTER)",
             "Cross-references tables and columns against database catalog / semantic layer",
@@ -63,7 +63,7 @@
         {
           "id": "TASK-202",
           "title": "Query Cost Estimator and Optimizer",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Generates EXPLAIN query plans for DuckDB / PostgreSQL",
             "Estimates relative query cost, row count, and execution thresholds",

@@ -19,3 +19,12 @@
   - Implemented `core/db/connector.py`, `core/db/duckdb_engine.py`, and `core/db/postgres_engine.py` with read-only query enforcement, SHA-256 data hashing, and row limit protection.
   - Built unit tests in `tests/test_warehouse.py` and `tests/test_semantic_layer.py`: all 10 tests passed in 8.5s.
 - **Next Step**: Epic 2 (SQL AST Validator, Fanout/Grain Guard, Cost Estimator, and Optimizer).
+
+## Iteration 3 - 2026-10-06T04:31:00Z
+- **Objective**: Implement Epic 2 (SQL AST Validator, Fanout Guard, Grounded SQL Generator, Cost Estimator & Optimizer).
+- **Completed**:
+  - Implemented `core/sql_engine/validator.py`: `sqlglot` AST parsing, mutation rejection, schema cross-referencing, alias-aware join fanout prevention, and PII policy checks.
+  - Implemented `core/sql_engine/generator.py`: Grounded SQL generation with canonical metric formulas, dimensions, join path derivation, and WHERE boundaries.
+  - Implemented `core/sql_engine/optimizer.py`: EXPLAIN plan cost estimation and execution caching.
+  - Added test suite `tests/test_sql_engine.py`: all 7 tests passing.
+- **Next Step**: Epic 3 (Explicit State Machine Orchestrator & Autonomous Loop).
