@@ -81,7 +81,7 @@
         {
           "id": "TASK-301",
           "title": "Explicit State Machine & Execution Policy",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Implements all 21 defined states from QUESTION_RECEIVED to COMPLETE",
             "Transition guards preventing invalid state leaps",
