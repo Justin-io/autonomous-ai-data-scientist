@@ -238,7 +238,7 @@
         {
           "id": "TASK-801",
           "title": "React + TypeScript Analyst Workspace Frontend",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Interactive dashboard with Question input and state machine trajectory timeline",
             "SQL query & cost viewer, hypothesis tree, segment decomposition, and anomaly charts",

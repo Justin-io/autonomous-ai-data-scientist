@@ -48,6 +48,15 @@ def readiness_check():
     }
 
 
+# Mount production React build if dist exists
+import os
+from fastapi.staticfiles import StaticFiles
+
+frontend_dist = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend", "dist")
+if os.path.exists(frontend_dist):
+    app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("api.main:app", host="0.0.0.0", port=8000, reload=True)
