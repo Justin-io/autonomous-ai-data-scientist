@@ -12,7 +12,7 @@
         {
           "id": "TASK-101",
           "title": "Build Realistic Synthetic Analytics Warehouse Generator",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Generates customers, products, orders, order_items, subscriptions, payments, refunds, marketing_channels, calendar_dim",
             "Seeds reproducible scenarios: revenue decline (Q3/Q4), pricing change, churn spike, Simpson's paradox, refund surge",
@@ -23,7 +23,7 @@
         {
           "id": "TASK-102",
           "title": "Define Semantic Layer Specification & Models",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Pydantic schemas for Entity, Metric, Dimension, Relationship, and JoinGraph",
             "Semantic catalog with canonical revenue, churn, AOV, refund rate metrics and allowable join paths",
@@ -34,7 +34,7 @@
         {
           "id": "TASK-103",
           "title": "Database Engine Connectors (DuckDB & PostgreSQL)",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Async/sync connection management for DuckDB and PostgreSQL",
             "Read-only enforcement at connection and query execution level",

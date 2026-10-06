@@ -9,3 +9,13 @@
   - `IMPLEMENTATION_PLAN.md` established following the Ralph-style autonomous development loop.
   - `DECISION_LOG.md` recorded architectural choices (ADR-001 through ADR-005).
 - **Next Step**: Phase 1 execution (Synthetic Analytics Warehouse generator, seed scenarios, DuckDB/PostgreSQL connector, and Semantic Layer Pydantic models).
+
+## Iteration 2 - 2026-10-06T04:28:00Z
+- **Objective**: Implement Epic 1 (Warehouse Generator, Reproducible Benchmark Scenarios, Semantic Layer Models/Catalog, and DB Connectors).
+- **Completed**:
+  - Implemented `warehouse/generator.py` with 10 relational tables and reproducible scenarios.
+  - Implemented `warehouse/scenarios.py` validating BQ-1 (revenue drop ~7.5%-8.0%), BQ-2 (Simpson's paradox in checkout redesign), BQ-3 (August refund surge).
+  - Implemented `core/semantic_layer/models.py` and `core/semantic_layer/catalog.py` with canonical entities, metrics, dimensions, grain, and allowable join path validation.
+  - Implemented `core/db/connector.py`, `core/db/duckdb_engine.py`, and `core/db/postgres_engine.py` with read-only query enforcement, SHA-256 data hashing, and row limit protection.
+  - Built unit tests in `tests/test_warehouse.py` and `tests/test_semantic_layer.py`: all 10 tests passed in 8.5s.
+- **Next Step**: Epic 2 (SQL AST Validator, Fanout/Grain Guard, Cost Estimator, and Optimizer).
