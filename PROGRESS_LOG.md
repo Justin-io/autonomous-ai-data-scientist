@@ -63,3 +63,12 @@
   - Implemented `core/hitl/manager.py`: Review trigger evaluation (confidence < 0.70, query cost limits, critic objections), structured packet builder, and decision application.
   - Added unit test suite `tests/test_reports.py`: all 3 tests passing.
 - **Next Step**: Epic 7 (FastAPI Service with SSE event streaming, End-to-End Autonomous Pipeline Orchestrator, and Benchmark Evaluation Suite).
+
+## Iteration 8 - 2026-10-06T04:52:00Z
+- **Objective**: Implement Epic 7 (FastAPI Service, End-to-End Autonomous Pipeline Orchestrator, and Benchmark Evaluation Suite).
+- **Completed**:
+  - Implemented `core/orchestrator/pipeline.py`: Full closed-loop autonomous execution pipeline driving state machine from `QUESTION_RECEIVED` through all 21 states to `COMPLETE` with evidence hashing and calibrated confidence.
+  - Implemented FastAPI service (`api/main.py`, `api/routes/analyses.py`, `api/routes/semantic.py`, `api/routes/evaluations.py`) with SSE event streaming, async jobs, and HITL approval endpoints.
+  - Implemented `eval/benchmark_suite.py` and `eval/harness.py`: Canonical benchmarks (BQ-1, BQ-2, BQ-3) and automated trajectory evaluator.
+  - Added test suite `tests/test_api_and_e2e.py`: all 4 tests passing (including end-to-end BQ-1 investigation).
+- **Next Step**: Epic 8 (React + TypeScript Analyst Workspace Frontend).

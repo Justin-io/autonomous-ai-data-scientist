@@ -209,7 +209,7 @@
         {
           "id": "TASK-701",
           "title": "FastAPI Service with Event Streaming",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Endpoints for analysis submission, status inspection, SSE event stream, report, and HITL approval",
             "Pydantic v2 schemas and structured error handling",
@@ -220,7 +220,7 @@
         {
           "id": "TASK-702",
           "title": "Evaluation Harness & Benchmark Business Suite",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Suite of realistic business questions (e.g. Q3 revenue decline 8%, conversion paradox, churn jump)",
             "Evaluation harness measuring SQL correctness, citation accuracy, anomaly precision, causal validity, and latency",
