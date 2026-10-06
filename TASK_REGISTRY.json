@@ -180,7 +180,7 @@
         {
           "id": "TASK-601",
           "title": "Plotly Visualization Engine & Structured Report Generator",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Generates intent-specific Plotly visualizations (waterfall, time-series, segment bars)",
             "Drafts structured analyst report with executive summary, findings, hypothesis testing, caveats, and citations",
@@ -191,7 +191,7 @@
         {
           "id": "TASK-602",
           "title": "Human-in-the-Loop (HITL) Checkpoints & Review Manager",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Evaluates triggers: confidence < 0.70, high-risk causal claim, semantic ambiguity",
             "Pauses state machine at HUMAN_REVIEW_REQUIRED and generates structured review packet",
