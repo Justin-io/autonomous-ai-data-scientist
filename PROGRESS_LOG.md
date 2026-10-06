@@ -86,3 +86,17 @@
   - Built production bundle (`npm run build`), producing `dist/index.html` and assets with zero errors.
   - Mounted `frontend/dist` in FastAPI `api/main.py` for direct browser delivery.
 - **Next Step**: Epic 9 (Packaging, Docker & AWS Production Deployment Guide, Full Test Suite Verification).
+
+## Iteration 10 - 2026-10-06T05:04:00Z
+- **Objective**: Implement Epic 9 (Packaging, Docker & AWS Production Deployment Guide, Full Test Matrix Verification).
+- **Completed**:
+  - Authored production `Dockerfile` with multi-stage build, non-root user `appuser`, and automated healthcheck probes.
+  - Authored `docker-compose.yml` for unified local containerization with PostgreSQL and DuckDB volume persistence.
+  - Authored `Makefile` for developer lifecycle (`install`, `warehouse`, `test`, `build-frontend`, `run`, `docker-build`, `docker-run`, `clean`).
+  - Authored comprehensive `docs/AWS_DEPLOYMENT.md` detailing enterprise architecture: Amazon ECS Fargate, AWS Application Load Balancer, Amazon RDS PostgreSQL (Multi-AZ), Amazon S3 analytics & reports storage, AWS Secrets Manager, AWS CloudWatch alarms, and Terraform IaC snippet.
+  - Locked dependency manifest in `requirements.txt`.
+  - Added dual healthcheck routes `/health` and `/api/v1/health` in `api/main.py`.
+  - Verified full test matrix: all 46 tests passed in 38s across 10 test suites (`pytest tests/ -v`).
+  - Verified live FastAPI HTTP service, SSE event streaming, and React frontend asset serving on port 8000.
+- **Status**: ALL 9 EPICS COMPLETE & VERIFIED.
+

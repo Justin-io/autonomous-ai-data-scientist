@@ -32,12 +32,14 @@ app.include_router(evaluations_router)
 
 
 @app.get("/health")
+@app.get("/api/v1/health")
 def health_check():
     """Liveness probe."""
     return {"status": "ok", "service": "auto_data_scientist", "timestamp": time.time()}
 
 
 @app.get("/ready")
+@app.get("/api/v1/ready")
 def readiness_check():
     """Readiness probe verifying engine and catalog availability."""
     return {
