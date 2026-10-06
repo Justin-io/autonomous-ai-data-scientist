@@ -1,0 +1,271 @@
+{
+  "project": "Autonomous AI Data Scientist Platform",
+  "version": "1.0.0",
+  "last_updated": "2026-10-06T04:19:40Z",
+  "current_iteration": 1,
+  "epics": [
+    {
+      "id": "EPIC-1",
+      "name": "Foundational Infrastructure & Data Warehouse",
+      "description": "Synthetic analytics warehouse generator, seed scenarios, DuckDB & PostgreSQL connectors, and semantic layer models.",
+      "tasks": [
+        {
+          "id": "TASK-101",
+          "title": "Build Realistic Synthetic Analytics Warehouse Generator",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Generates customers, products, orders, order_items, subscriptions, payments, refunds, marketing_channels, calendar_dim",
+            "Seeds reproducible scenarios: revenue decline (Q3/Q4), pricing change, churn spike, Simpson's paradox, refund surge",
+            "Creates DuckDB and PostgreSQL compatible database seed files and tables"
+          ],
+          "dependencies": []
+        },
+        {
+          "id": "TASK-102",
+          "title": "Define Semantic Layer Specification & Models",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Pydantic schemas for Entity, Metric, Dimension, Relationship, and JoinGraph",
+            "Semantic catalog with canonical revenue, churn, AOV, refund rate metrics and allowable join paths",
+            "Semantic lookup, validation, and synonym resolution methods"
+          ],
+          "dependencies": ["TASK-101"]
+        },
+        {
+          "id": "TASK-103",
+          "title": "Database Engine Connectors (DuckDB & PostgreSQL)",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Async/sync connection management for DuckDB and PostgreSQL",
+            "Read-only enforcement at connection and query execution level",
+            "Execution timeout and maximum row limit enforcement"
+          ],
+          "dependencies": ["TASK-101"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-2",
+      "name": "SQL Generator, Validator, Cost Estimator & Optimizer",
+      "description": "sqlglot AST parser, read-only verifier, join fanout detector, grain consistency, and EXPLAIN cost estimator.",
+      "tasks": [
+        {
+          "id": "TASK-201",
+          "title": "SQL AST Validator & Read-Only Enforcer",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Parses SQL via sqlglot, prevents any mutating statements (DROP, DELETE, UPDATE, INSERT, ALTER)",
+            "Cross-references tables and columns against database catalog / semantic layer",
+            "Detects join fanout and validates GROUP BY grain matches metric definitions"
+          ],
+          "dependencies": ["TASK-102"]
+        },
+        {
+          "id": "TASK-202",
+          "title": "Query Cost Estimator and Optimizer",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Generates EXPLAIN query plans for DuckDB / PostgreSQL",
+            "Estimates relative query cost, row count, and execution thresholds",
+            "Implements query caching and intermediate result hashing"
+          ],
+          "dependencies": ["TASK-201", "TASK-103"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-3",
+      "name": "State Machine Orchestrator & Execution Loop",
+      "description": "Explicit finite state machine with machine-checkable guards, retry policies, and OBSERVE-PLAN-ACT-CRITIQUE cycle.",
+      "tasks": [
+        {
+          "id": "TASK-301",
+          "title": "Explicit State Machine & Execution Policy",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Implements all 21 defined states from QUESTION_RECEIVED to COMPLETE",
+            "Transition guards preventing invalid state leaps",
+            "Configurable bounds: max steps, token budget, tool call limits, execution timeout",
+            "Durable state serialization and event logging for audit trail"
+          ],
+          "dependencies": ["TASK-102", "TASK-201"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-4",
+      "name": "Hypothesis Engine & Statistical/Anomaly Tooling",
+      "description": "Competing hypothesis generation, ranking, Bayesian confidence updating, inferential stats, anomaly detection, and segmentation.",
+      "tasks": [
+        {
+          "id": "TASK-401",
+          "title": "Autonomous Hypothesis Engine",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Generates multiple competing, falsifiable hypotheses for question",
+            "Ranks hypotheses by information gain and expected evidence",
+            "Updates probabilities on evidence arrival and records reasons for rejected hypotheses"
+          ],
+          "dependencies": ["TASK-301"]
+        },
+        {
+          "id": "TASK-402",
+          "title": "Descriptive, Inferential & Effect-Size Statistical Engine",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Performs t-tests, Mann-Whitney U, Chi-square, and ANOVA with SciPy/statsmodels",
+            "Calculates 95% confidence intervals and Cohen's d / relative risk effect sizes",
+            "Checks statistical assumptions (normality, sample size, variance homogeneity)"
+          ],
+          "dependencies": ["TASK-103"]
+        },
+        {
+          "id": "TASK-403",
+          "title": "Anomaly Detection & Multi-Dimensional Segmentation",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Time-series and distributional anomaly detection (IQR, Hampel, Isolation Forest)",
+            "Multi-dimensional shift-share contribution analysis across customer, product, geo, and channel",
+            "Identifies segments disproportionately responsible for top-line metrics change"
+          ],
+          "dependencies": ["TASK-402"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-5",
+      "name": "Causal Analysis, Critic Agent & Evidence Verification",
+      "description": "Causal vs associative separation, assumption checking, independent Critic Agent, calibrated confidence, and evidence citation guard.",
+      "tasks": [
+        {
+          "id": "TASK-501",
+          "title": "Causal Inference Subsystem with Defensive Downgrade",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Implements Difference-in-Differences (DiD) and covariate adjustment",
+            "Validates unconfoundedness, common support, and parallel trends",
+            "Automatically labels non-causal observations as associative if assumptions fail"
+          ],
+          "dependencies": ["TASK-402"]
+        },
+        {
+          "id": "TASK-502",
+          "title": "Independent Critic Agent",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Detects Simpson's paradox, survivorship bias, denominator traps, p-hacking, and post-hoc narrative",
+            "Applies multiple testing correction (Bonferroni & Benjamini-Hochberg)",
+            "Can reject analysis trajectory and force rework to earlier states"
+          ],
+          "dependencies": ["TASK-401", "TASK-501"]
+        },
+        {
+          "id": "TASK-503",
+          "title": "Evidence Store & Calibrated Confidence Scorer",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Creates immutable evidence objects with dataset hash, query, and metric definitions",
+            "Calculates multi-factor calibrated confidence score (0.0 to 1.0)",
+            "Deterministic citation verifier: validates that every numeric claim in report matches an evidence record"
+          ],
+          "dependencies": ["TASK-401", "TASK-502"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-6",
+      "name": "Visualization, Report Generation & HITL Subsystem",
+      "description": "Plotly visualization generator, structured executive analyst report, and human-in-the-loop review workflow.",
+      "tasks": [
+        {
+          "id": "TASK-601",
+          "title": "Plotly Visualization Engine & Structured Report Generator",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Generates intent-specific Plotly visualizations (waterfall, time-series, segment bars)",
+            "Drafts structured analyst report with executive summary, findings, hypothesis testing, caveats, and citations",
+            "Enforces strict evidence citations for all numbers"
+          ],
+          "dependencies": ["TASK-503"]
+        },
+        {
+          "id": "TASK-602",
+          "title": "Human-in-the-Loop (HITL) Checkpoints & Review Manager",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Evaluates triggers: confidence < 0.70, high-risk causal claim, semantic ambiguity",
+            "Pauses state machine at HUMAN_REVIEW_REQUIRED and generates structured review packet",
+            "Resumes execution upon user decision (approve, reject, adjust)"
+          ],
+          "dependencies": ["TASK-301", "TASK-503"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-7",
+      "name": "FastAPI Service, OpenTelemetry & Benchmark Evaluation Suite",
+      "description": "REST API with SSE streaming, OpenTelemetry tracing, end-to-end benchmark suite, and evaluation harness.",
+      "tasks": [
+        {
+          "id": "TASK-701",
+          "title": "FastAPI Service with Event Streaming",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Endpoints for analysis submission, status inspection, SSE event stream, report, and HITL approval",
+            "Pydantic v2 schemas and structured error handling",
+            "Background asynchronous task management"
+          ],
+          "dependencies": ["TASK-301", "TASK-601"]
+        },
+        {
+          "id": "TASK-702",
+          "title": "Evaluation Harness & Benchmark Business Suite",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Suite of realistic business questions (e.g. Q3 revenue decline 8%, conversion paradox, churn jump)",
+            "Evaluation harness measuring SQL correctness, citation accuracy, anomaly precision, causal validity, and latency",
+            "Automated test runner producing JSON evaluation report"
+          ],
+          "dependencies": ["TASK-701"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-8",
+      "name": "React + TypeScript Frontend Analyst Workspace",
+      "description": "Production UI with real-time trajectory visualization, SQL inspector, hypothesis viewer, Plotly charts, and HITL approval.",
+      "tasks": [
+        {
+          "id": "TASK-801",
+          "title": "React + TypeScript Analyst Workspace Frontend",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Interactive dashboard with Question input and state machine trajectory timeline",
+            "SQL query & cost viewer, hypothesis tree, segment decomposition, and anomaly charts",
+            "Plotly chart renderer and evidence citation popovers",
+            "HITL approval modal allowing user sign-off"
+          ],
+          "dependencies": ["TASK-701"]
+        }
+      ]
+    },
+    {
+      "id": "EPIC-9",
+      "name": "Packaging, Docker & AWS Production Deployment Guide",
+      "description": "Docker Compose setup, automated test suite verification, and production AWS deployment architecture.",
+      "tasks": [
+        {
+          "id": "TASK-901",
+          "title": "Docker Setup, Test Matrix Verification & AWS Deployment Guide",
+          "status": "NOT_STARTED",
+          "acceptance_criteria": [
+            "Dockerfile and docker-compose.yml for backend, DB, and frontend",
+            "Full test matrix passing with pytest",
+            "Comprehensive production deployment documentation"
+          ],
+          "dependencies": ["TASK-702", "TASK-801"]
+        }
+      ]
+    }
+  ]
+}
