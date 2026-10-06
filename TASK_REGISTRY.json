@@ -140,7 +140,7 @@
         {
           "id": "TASK-501",
           "title": "Causal Inference Subsystem with Defensive Downgrade",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Implements Difference-in-Differences (DiD) and covariate adjustment",
             "Validates unconfoundedness, common support, and parallel trends",
@@ -151,7 +151,7 @@
         {
           "id": "TASK-502",
           "title": "Independent Critic Agent",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Detects Simpson's paradox, survivorship bias, denominator traps, p-hacking, and post-hoc narrative",
             "Applies multiple testing correction (Bonferroni & Benjamini-Hochberg)",
@@ -162,7 +162,7 @@
         {
           "id": "TASK-503",
           "title": "Evidence Store & Calibrated Confidence Scorer",
-          "status": "NOT_STARTED",
+          "status": "COMPLETED",
           "acceptance_criteria": [
             "Creates immutable evidence objects with dataset hash, query, and metric definitions",
             "Calculates multi-factor calibrated confidence score (0.0 to 1.0)",

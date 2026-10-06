@@ -45,3 +45,12 @@
   - Implemented `core/statistics/anomalies.py` (Hampel filter, IQR fences, Isolation Forest, Changepoint detector) and `core/statistics/segmentation.py` (multi-dimensional shift-share contribution analysis).
   - Added unit test suites `tests/test_hypothesis.py` and `tests/test_statistics.py`: all 9 tests passing.
 - **Next Step**: Epic 5 (Causal Analysis with Defensive Downgrading, Independent Critic Agent, and Cryptographic Evidence Verification).
+
+## Iteration 6 - 2026-10-06T04:42:00Z
+- **Objective**: Implement Epic 5 (Causal Inference with Defensive Downgrade, Independent Critic Agent, Evidence Store, and Calibrated Confidence).
+- **Completed**:
+  - Implemented `core/causal/engine.py`: Difference-in-Differences estimator, observational identification checks, and defensive downgrade to `ASSOCIATIVE` with explicit confounding warnings.
+  - Implemented `core/critic/agent.py`: Simpson's Paradox detector, Benjamini-Hochberg FDR multiple testing correction, and causal overreach audits.
+  - Implemented `core/evidence/store.py` (cryptographic SHA-256 evidence tracking), `core/evidence/confidence.py` (multi-factor calibrated confidence scoring), and `core/evidence/verifier.py` (deterministic regex-based numeric claim verifier).
+  - Added unit test suites `tests/test_causal_critic.py` and `tests/test_evidence.py`: all 8 tests passing.
+- **Next Step**: Epic 6 (Plotly Visualization Engine, Structured Analyst Report Generator, and Human-in-the-Loop Review Manager).
