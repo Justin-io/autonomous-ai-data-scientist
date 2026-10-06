@@ -36,3 +36,12 @@
   - Implemented `core/orchestrator/state_machine.py` with graph transition validations, pre-condition guards, retry policies, and fail-safe bounds enforcement.
   - Added unit test suite `tests/test_orchestrator.py`: all 5 tests passing.
 - **Next Step**: Epic 4 (Hypothesis Engine, Statistical Tests, Anomaly Detection, and Multi-Dimensional Segmentation).
+
+## Iteration 5 - 2026-10-06T04:37:00Z
+- **Objective**: Implement Epic 4 (Autonomous Hypothesis Engine, Descriptive/Inferential Statistics, Anomaly Detection, and Shift-Share Segmentation).
+- **Completed**:
+  - Implemented `core/hypothesis/engine.py` with competing hypothesis synthesis, information gain ranking, Bayesian posterior updates, and falsification tracking.
+  - Implemented `core/statistics/descriptive.py` and `core/statistics/inferential.py` with Welch's t-test, Mann-Whitney U, Chi-Square, Cohen's d, Relative Risk, and 95% CIs.
+  - Implemented `core/statistics/anomalies.py` (Hampel filter, IQR fences, Isolation Forest, Changepoint detector) and `core/statistics/segmentation.py` (multi-dimensional shift-share contribution analysis).
+  - Added unit test suites `tests/test_hypothesis.py` and `tests/test_statistics.py`: all 9 tests passing.
+- **Next Step**: Epic 5 (Causal Analysis with Defensive Downgrading, Independent Critic Agent, and Cryptographic Evidence Verification).
